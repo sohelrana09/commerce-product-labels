@@ -1,5 +1,5 @@
 import { useIms } from "@adobe/aio-commerce-lib-admin-ui/web";
-import { useCallback, useMemo } from "react";
+import { createContext, useCallback, useContext, useMemo } from "react";
 
 import actionUrls from "../config.json";
 
@@ -17,11 +17,22 @@ export class ApiError extends Error {
   }
 }
 
+/** What the Admin page needs from the backend. The preview supplies an in-browser version. */
+export type LabelsApi = {
+  deleteRule: (code: string) => Promise<{ deleted: boolean }>;
+  listRules: () => Promise<{ rules: LabelRule[]; examples: LabelRule[] }>;
+  lookups: () => Promise<Lookups>;
+  saveRule: (
+    rule: LabelRule,
+    previousCode?: string,
+  ) => Promise<{ rule: LabelRule }>;
+};
+
 /**
  * Calls the app's Admin web actions with the signed-in admin's IMS token. Action URLs come from
  * `config.json`, which the App Builder CLI writes at build and dev time.
  */
-export function useLabelsApi() {
+export function useActionsApi(): LabelsApi {
   const ims = useIms();
   if (ims.error) {
     throw ims.error;
@@ -66,4 +77,15 @@ export function useLabelsApi() {
     }),
     [invoke],
   );
+}
+
+export const LabelsApiContext = createContext<LabelsApi | null>(null);
+
+/** The backend the page talks to: the App Builder actions, or the preview's in-browser store. */
+export function useLabelsApi(): LabelsApi {
+  const api = useContext(LabelsApiContext);
+  if (!api) {
+    throw new Error("LabelsApiContext is missing");
+  }
+  return api;
 }

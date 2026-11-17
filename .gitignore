@@ -43,3 +43,6 @@ src/commerce-backend-ui-2/web-src/src/config.json
 
 # Local demo settings (your Catalog Service endpoint)
 demo/config.json
+
+# Local Admin preview build (npm run admin:preview)
+.preview-dist

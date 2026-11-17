@@ -132,6 +132,14 @@ More in [docs/architecture.md](docs/architecture.md).
 
    Fill in your Catalog Service endpoint and headers in `demo/config.json` (the same values as your storefront's `config.json`), then open http://localhost:4310. The demo labels your products with `demo/rules.json`.
 
+   To see the Admin page without Commerce or an Adobe account:
+
+   ```bash
+   npm run admin:preview
+   ```
+
+   Open http://localhost:4320/preview.html. It is the real Admin page (list, editor, live preview and **Test a product**), with rules kept in your browser's local storage and seeded with the examples. **Reset to examples** starts over.
+
 3. **Deploy**
 
    In the [Adobe Developer Console](https://developer.adobe.com/console), add **I/O Management API**, **App Builder Data Services** and an **OAuth Server-to-Server** credential to the workspace. Then:
@@ -196,6 +204,7 @@ The full guide, with settings, data and troubleshooting, is [docs/installation.m
 | `npm run code:check` / `npm run code:fix` | Biome lint and format. |
 | `npm run typecheck` | TypeScript check of the Admin page. |
 | `npm run demo` | The storefront kit against your Catalog Service, at http://localhost:4310. |
+| `npm run admin:preview` | The Admin page with an in-browser rules store, at http://localhost:4320/preview.html. No Commerce or Adobe account needed. `PORT` changes the port. |
 | `aio app dev` | The Admin page locally, against the workspace's actions. |
 | `aio app build` / `aio app deploy` | Build, or build and deploy to the selected workspace. |
 
@@ -214,6 +223,7 @@ src/commerce-backend-ui-2/
     actions/                 Admin actions: rules-list, rule-save, rule-delete, lookups
     web-src/                 the Admin page (React Spectrum 2)
 scripts/setup-database.js    the App Management install step
+scripts/admin-preview.js     local Admin page preview (Parcel)
 demo/                        local demo against a Catalog Service endpoint
 docs/                        guides and screenshots
 test/                        unit tests
@@ -221,7 +231,7 @@ test/                        unit tests
 
 ## Roadmap
 
-Done: rules engine with price, discount, stock, SKU, name, type and attribute conditions; tokens; priorities, stop-further and per-corner caps; schedules, store views and placements; public cacheable rules feed; Admin page with examples, editor, live preview and product test; App Management settings; rules in code; storefront kit for the Product Discovery and PDP drop-ins; local demo against Catalog Service; unit tests at 98% coverage.
+Done: rules engine with price, discount, stock, SKU, name, type and attribute conditions; tokens; priorities, stop-further and per-corner caps; schedules, store views and placements; public cacheable rules feed; Admin page with examples, editor, live preview and product test; App Management settings; rules in code; storefront kit for the Product Discovery and PDP drop-ins; local demo against Catalog Service; local Admin preview; unit tests at 98% coverage.
 
 Next:
 - Install and check on a live Adobe Commerce as a Cloud Service instance, then submit to the Adobe Commerce Marketplace.
@@ -263,7 +273,7 @@ Bug fixes, new conditions, storefront improvements and better documentation are 
 
 1. Fork the repository and create a branch: `git checkout -b feature/your-change`.
 2. Make your change, following the [project structure](#project-structure): rule logic goes in the engine with unit tests, server-only code in `src/common/labels`, and actions stay thin.
-3. Run the checks: `npm run code:check`, `npm run typecheck` and `npm test`, plus `npm run demo` for anything a shopper sees.
+3. Run the checks: `npm run code:check`, `npm run typecheck` and `npm test`, plus `npm run demo` for anything a shopper sees and `npm run admin:preview` for anything on the Admin page.
 4. Commit, push the branch and open a pull request that says what changed and how you tested it.
 
 The full guide is in [CONTRIBUTING.md](CONTRIBUTING.md). Please report security problems privately, see [SECURITY.md](SECURITY.md), and follow the [code of conduct](CODE_OF_CONDUCT.md).
