@@ -1,0 +1,20 @@
+[
+  {
+    "default": true,
+    "label": "Show product labels on the storefront",
+    "name": "labelsEnabled",
+    "type": "boolean"
+  },
+  {
+    "default": "2",
+    "label": "Most labels in one corner of a product image (1 to 10)",
+    "name": "maxPerPosition",
+    "type": "text"
+  },
+  {
+    "default": "300",
+    "label": "Seconds browsers and the CDN may cache the label rules (0 to 86400)",
+    "name": "cacheSeconds",
+    "type": "text"
+  }
+]

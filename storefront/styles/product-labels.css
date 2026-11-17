@@ -1,0 +1,97 @@
+/* Product Labels storefront kit. Override the custom properties in your theme. */
+
+.product-labels-host {
+  position: relative;
+}
+
+.product-labels {
+  --product-labels-inset: 8px;
+  --product-labels-gap: 4px;
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-labels__corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: var(--product-labels-gap);
+  max-width: calc(100% - 2 * var(--product-labels-inset));
+}
+
+.product-labels__corner--top-left {
+  top: var(--product-labels-inset);
+  left: var(--product-labels-inset);
+  align-items: flex-start;
+}
+
+.product-labels__corner--top-right {
+  top: var(--product-labels-inset);
+  right: var(--product-labels-inset);
+  align-items: flex-end;
+}
+
+.product-labels__corner--bottom-left {
+  bottom: var(--product-labels-inset);
+  left: var(--product-labels-inset);
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.product-labels__corner--bottom-right {
+  right: var(--product-labels-inset);
+  bottom: var(--product-labels-inset);
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+.product-label {
+  display: inline-block;
+  padding: 4px 8px;
+  overflow: hidden;
+  background: var(--product-label-background, #1f1f1f);
+  color: var(--product-label-color, #fff);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-label--rectangle {
+  border-radius: 2px;
+}
+
+.product-label--pill {
+  padding-inline: 10px;
+  border-radius: 999px;
+}
+
+.product-label--circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 4px;
+  border-radius: 50%;
+  font-size: 11px;
+  text-align: center;
+  white-space: normal;
+}
+
+.product-label--ribbon {
+  padding-inline-end: 14px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%);
+}
+
+.product-labels__corner--top-right .product-label--ribbon,
+.product-labels__corner--bottom-right .product-label--ribbon {
+  padding-inline: 14px 8px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
+}

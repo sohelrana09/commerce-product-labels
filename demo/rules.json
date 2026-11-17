@@ -1,0 +1,138 @@
+{
+  "enabled": true,
+  "maxPerPosition": 2,
+  "rules": [
+    {
+      "code": "out-of-stock",
+      "text": "Sold out",
+      "position": "top-right",
+      "shape": "pill",
+      "background": "#1f1f1f",
+      "color": "#ffffff",
+      "priority": 0,
+      "stopFurther": true,
+      "conditions": [
+        {
+          "field": "in_stock",
+          "operator": "is",
+          "value": false
+        }
+      ]
+    },
+    {
+      "code": "sale-percent",
+      "text": "-{discount_percent}%",
+      "position": "top-left",
+      "shape": "rectangle",
+      "background": "#d0021b",
+      "color": "#ffffff",
+      "priority": 10,
+      "conditions": [
+        {
+          "field": "discount_percent",
+          "operator": "gte",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "code": "sticker",
+      "text": "Sticker",
+      "position": "top-left",
+      "shape": "pill",
+      "background": "#6e1fd1",
+      "color": "#ffffff",
+      "priority": 15,
+      "conditions": [
+        {
+          "field": "name",
+          "operator": "contains",
+          "value": "sticker"
+        }
+      ]
+    },
+    {
+      "code": "apparel",
+      "text": "Apparel",
+      "position": "top-left",
+      "shape": "rectangle",
+      "background": "#1f1f1f",
+      "color": "#ffffff",
+      "priority": 16,
+      "match": "any",
+      "conditions": [
+        {
+          "field": "name",
+          "operator": "contains",
+          "value": "apron"
+        },
+        {
+          "field": "name",
+          "operator": "contains",
+          "value": "shirt"
+        },
+        {
+          "field": "name",
+          "operator": "contains",
+          "value": "hoodie"
+        },
+        {
+          "field": "name",
+          "operator": "contains",
+          "value": "hat"
+        }
+      ]
+    },
+    {
+      "code": "low-stock",
+      "text": "Only a few left",
+      "position": "bottom-left",
+      "shape": "pill",
+      "background": "#f5a623",
+      "color": "#1f1f1f",
+      "priority": 20,
+      "conditions": [
+        {
+          "field": "low_stock",
+          "operator": "is",
+          "value": true
+        }
+      ]
+    },
+    {
+      "code": "premium",
+      "text": "Premium",
+      "position": "top-right",
+      "shape": "ribbon",
+      "background": "#2d7d46",
+      "color": "#ffffff",
+      "priority": 30,
+      "placements": [
+        "listing"
+      ],
+      "conditions": [
+        {
+          "field": "final_price",
+          "operator": "gte",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "code": "configurable",
+      "text": "More options",
+      "position": "bottom-right",
+      "shape": "rectangle",
+      "background": "#0d66d0",
+      "color": "#ffffff",
+      "priority": 40,
+      "conditions": [
+        {
+          "field": "type",
+          "operator": "contains",
+          "value": "complex"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "endpoint": "https://<your-commerce-graphql-endpoint>/graphql",
+  "headers": {
+    "Magento-Store-Code": "main_website_store",
+    "Magento-Store-View-Code": "default",
+    "Magento-Website-Code": "base",
+    "Magento-Customer-Group": "<customer group hash>",
+    "Store": "default"
+  },
+  "phrase": "",
+  "pageSize": 24
+}

@@ -1,0 +1,59 @@
+name: Bug report
+description: A label, the Admin page, the storefront kit or the installation doesn't work as described.
+labels: [ bug ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Security problems go through a private report instead, see SECURITY.md.
+        Never paste `.env` or `.aio` values, workspace credentials, tokens or customer data here.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What did you see, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the label rule (JSON from the Admin or LABEL_RULES) and the product (SKU, prices, stock, attributes).
+      placeholder: |
+        1. Create a label with ...
+        2. Open the product list or product page for ...
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Label rules (which products get which labels)
+        - Admin page
+        - Storefront kit or rules feed
+        - Installation or App Management
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: commerce
+    attributes:
+      label: Commerce
+      options:
+        - Adobe Commerce as a Cloud Service (SaaS)
+        - Adobe Commerce on cloud infrastructure (PaaS)
+        - Adobe Commerce on-premises
+        - Not relevant
+  - type: input
+    id: version
+    attributes:
+      label: Product Labels version or commit
+      placeholder: v0.1.0 or 2be2493
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Output of `aio app logs`, browser console errors or a screenshot. Remove any secrets first.
+      render: text

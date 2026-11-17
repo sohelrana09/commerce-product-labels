@@ -1,0 +1,20 @@
+extensions:
+  commerce/backend-ui/2:
+    $include: src/commerce-backend-ui-2/ext.config.yaml
+  commerce/configuration/1:
+    $include: src/commerce-configuration-1/ext.config.yaml
+  commerce/extensibility/1:
+    $include: src/commerce-extensibility-1/ext.config.yaml
+productDependencies:
+  - code: COMMC
+    minVersion: 2.4.5
+    maxVersion: 3.0.0
+configSchema:
+  title: Product Labels setup
+  description: Runtime settings for the Product Labels app.
+  properties:
+    - title: Logging level
+      type: string
+      description: "How much the app logs. One of: debug, info, warn, error."
+      envKey: LOG_LEVEL
+      default: info
