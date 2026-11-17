@@ -13,7 +13,7 @@ npm install
 npm test
 ```
 
-`npm run demo` runs the storefront kit against a Catalog Service endpoint of your choice. To deploy your copy, follow [docs/installation.md](docs/installation.md): you need an App Builder project, and a Commerce instance in the same Adobe organization to install it on.
+`npm run demo` runs the storefront kit against a Catalog Service endpoint of your choice, and `npm run admin:preview` runs the Admin page at http://localhost:4320/preview.html with rules kept in the browser. To deploy your copy, follow [docs/installation.md](docs/installation.md): you need an App Builder project, and a Commerce instance in the same Adobe organization to install it on.
 
 ## Making a change
 
@@ -32,7 +32,7 @@ npm test
    npm test
    ```
 
-   Plus `npm run demo` for anything a shopper sees.
+   Plus `npm run demo` for anything a shopper sees, and `npm run admin:preview` for anything on the Admin page.
 
 5. Update the README, the guides in `docs/` and the [CHANGELOG](CHANGELOG.md) when behaviour, rule fields or setup change.
 6. Commit, push the branch and open a pull request that says what changed and how you tested it. If you tried it on a Commerce instance, say which (SaaS or PaaS, and the version).
