@@ -6,7 +6,10 @@
  *
  *   import { initProductLabels, appendLabels } from '../../scripts/product-labels.js';
  *
- *   initProductLabels({ endpoint: '<your product-labels/rules action URL>', storeView: 'default' });
+ *   initProductLabels({
+ *     endpoint: '<your product-labels/rules action URL>',
+ *     storeView: 'default',
+ *   });
  *
  *   // Product list (Product Discovery drop-in), inside the ProductImage slot:
  *   appendLabels(anchorWrapper, ctx.product, 'listing');
@@ -100,7 +103,11 @@ export function initProductLabels(options = {}) {
     locale: options.locale || document.documentElement.lang || undefined,
   };
   rulesPromise = Array.isArray(options.rules)
-    ? Promise.resolve({ enabled: true, maxPerPosition: options.maxPerPosition, rules: options.rules })
+    ? Promise.resolve({
+      enabled: true,
+      maxPerPosition: options.maxPerPosition,
+      rules: options.rules,
+    })
     : null;
 }
 

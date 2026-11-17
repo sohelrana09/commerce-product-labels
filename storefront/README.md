@@ -88,7 +88,15 @@ const drawLabels = (product) => {
 events.on('pdp/data', drawLabels, { eager: true });
 ```
 
-`appendLabels` replaces the labels it drew before, so calling it again on each `pdp/data` is safe. If your gallery shows thumbnails beside the main image, pass the element around the main image instead, or move the labels with the CSS custom properties below.
+`appendLabels` replaces the labels it drew before, so calling it again on each `pdp/data` is safe.
+
+The desktop gallery shows a thumbnail column to the left of the main image, so the labels would sit over the thumbnails. The image carousel scrolls, so don't draw inside it; shift the label layer instead (86px fits the boilerplate's gallery):
+
+```css
+.product-details__gallery:has(.pdp-carousel__controls__container--thumbnailsColumn) > .product-labels {
+  left: 86px;
+}
+```
 
 ## Styling
 
@@ -113,7 +121,12 @@ Each label's colors come from the rule as `--product-label-background` and `--pr
 - **One request per tab:** the first `appendLabels` fetches the feed; later calls and pages reuse it from `sessionStorage` for `cacheSeconds`.
 - **Never breaks the page:** if the feed fails, the kit logs a warning and shows no labels.
 - **No layout shift:** labels are absolutely positioned over the image.
+- **Inline hosts work:** an inline element such as the product list's image link is made `display: block`, so the labels cover the whole image.
 - **Safe text:** labels are plain text (`textContent`) with validated hex colors.
+
+## Try it on a storefront
+
+A working integration lives in a test copy of the commerce boilerplate: the kit files, `scripts/initializers/product-labels.js` (which falls back to a static `product-labels-rules.json` until the rules feed is deployed), one `appendLabels` call in each of `blocks/product-list-page/product-list-page.js` and `blocks/product-details/product-details.js`, and the gallery rule above.
 
 ## Try it locally
 
