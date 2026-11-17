@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Storefront kit fixes, found on a real EDS storefront:** the scripts now pass the commerce boilerplate's ESLint (Airbnb) rules as the docs promised, with loops rewritten as array methods and no behaviour change. Inline hosts such as the product list's image link are made `display: block`, so labels sit over the image instead of on its bottom edge. The storefront guide shows how to keep product page labels off the thumbnail column.
 - **Admin preview:** `npm run admin:preview` serves the real Admin page at http://localhost:4320/preview.html without Commerce, App Builder or an Adobe account. Rules are kept in the browser's local storage, seeded with the examples, and checked with the same validation as the server. The page now reaches its backend through a `LabelsApi` context, so the preview swaps in an in-browser store.
 
 ## v0.1.0 (2026-11-17)

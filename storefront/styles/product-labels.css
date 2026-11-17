@@ -4,6 +4,12 @@
   position: relative;
 }
 
+/* An inline host (such as the product list's image link) would size the label layer to one line
+   of text, not to the image. :where keeps this easy to override. */
+:where(a, span).product-labels-host {
+  display: block;
+}
+
 .product-labels {
   --product-labels-inset: 8px;
   --product-labels-gap: 4px;
